@@ -47,7 +47,7 @@ void Game::startLevel()
     enemySpawning->start(2000);
     boosterSpawning = new QTimer(this);
     connect(boosterSpawning, SIGNAL(timeout()), this, SLOT(spawnBooster()));
-    Won();
+
 }
 
 void Game::Lost() {

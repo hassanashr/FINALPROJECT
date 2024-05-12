@@ -60,7 +60,7 @@ void Tower::fire(const QPointF &attackDest) {
 
 void Tower::changeHealth(int healthChange){
     if(healthBar == nullptr){
-        healthBar = new HealthBar(this, 50, 10,  x()*61+10, y()*57 + 55,  1);
+        healthBar = new HealthBar(this, 50, 10, pos().x() + 5, pos().y() + 10, 1);
     }
 
     if(health + healthChange >= maxHealth){
@@ -76,5 +76,6 @@ void Tower::changeHealth(int healthChange){
         health += healthChange;
         healthBar->updateBar();
     }
+    isDamaged();
 }
 

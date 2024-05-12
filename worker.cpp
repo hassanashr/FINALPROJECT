@@ -6,23 +6,23 @@ Worker::Worker(int x, int y)
     destination = new QPointF(1*61 + 5, 1*57 + 55);
     doneHealing = true;
     doneHealingAnimation = true;
-    setPixmap(QPixmap(":/img/Worker/baseSprite.png")
+    setPixmap(QPixmap(":/mapAssets/Worker/baseSprite.png")
                   .scaled(50, 50)); //needs some refining until graphically appealing
     setPos(x, y);
     xHome = x;
     yHome = y;
     healing = 2;
     for (int i = 0; i <= 19; ++i) {
-        QString filePath = ":/img/Worker/8_enemies_1_walk_" + QString("%1").arg(i, 3, 10, QChar('0')) + ".png";
+        QString filePath = ":/mapAssets/Worker/8_enemies_1_walk_" + QString("%1").arg(i, 3, 10, QChar('0')) + ".png";
         movingAnimation.append(QPixmap(filePath));
 
     }
     for (int i = 0; i <= 19; ++i) {
-        QString filePath = ":/img/Worker/8_enemies_1_attack_" + QString("%1").arg(i, 3, 10, QChar('0'))+ ".png";
+        QString filePath = ":/mapAssets/Worker/8_enemies_1_attack_" + QString("%1").arg(i, 3, 10, QChar('0'))+ ".png";
         healingAnimation.append(QPixmap(filePath));
     }
     for (int i = 0; i <= 19; ++i) {
-        QString filePath = ":/img/Worker/8_enemies_1_die_" + QString("%1").arg(i, 3, 10, QChar('0'))+ ".png";
+        QString filePath = ":/mapAssets/Worker/8_enemies_1_die_" + QString("%1").arg(i, 3, 10, QChar('0'))+ ".png";
         deathAnimation.append(QPixmap(filePath));
     }
 
@@ -85,6 +85,7 @@ void Worker::healWall(Wall *&w)
 
 void Worker::Die()
 {
+    maxWorkers--;
     isDead = true;
     startDeathAnimation();
     QTimer::singleShot(15*animationInterval, this, SLOT(deleteWorker()));
@@ -263,3 +264,5 @@ void Worker::deleteWorker()
 }
 
 int Worker::currentWorkers = 0;
+
+int Worker::maxWorkers = 5;
