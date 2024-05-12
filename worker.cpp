@@ -61,8 +61,8 @@ void Worker::setHealing(int h)
 void Worker::setStruct(Structure * parent)
 {
     structToFix = parent;
-    destination->setX(structToFix->getX()*61+1);
-    destination->setY(structToFix->getY()*57 + 51);
+    destination->setX(structToFix->pos().x());
+    destination->setY(structToFix->pos().y());
     doneHealing = false;
     moveTimer->start(animationInterval);
 }

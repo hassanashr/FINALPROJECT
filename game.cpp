@@ -1,5 +1,6 @@
 #include "game.h"
 #include <QGraphicsScene>
+#include "closebutton.h"
 #include "graph.h"
 #include "Boosters.h"
 
@@ -12,6 +13,10 @@ Game::Game(int l)
     setWindowTitle("Clash Of Clans");
     blockPixel = 64;
     currentLevel = l;
+    CloseButton* close_btn = new CloseButton(this);
+    gameScene->addItem(close_btn);
+    close_btn->setZValue(100);
+    close_btn->setPos(750, 0);
 
 }
 

@@ -81,6 +81,7 @@ bool Structure::isDamaged()
         Worker* worker = new Worker(6*61+1, 6*57 + 51);
         worker->setStruct(this);
         parent->addItem(worker);
+        worker->setZValue(9);
     }
     if(health >= maxHealth)
         requestedAid = false;
