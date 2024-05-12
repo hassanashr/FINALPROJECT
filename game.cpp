@@ -6,7 +6,7 @@
 #include "timerwidget.h"
 
 
-Game::Game(int l)
+Game::Game(int l, QString t)
 {
     gameScene = new QGraphicsScene();
     gameGraph = new Graph();
@@ -21,6 +21,7 @@ Game::Game(int l)
     TimerWidget* timer = new TimerWidget(this);
     gameScene->addItem(timer);
     timer->setZValue(50);
+    theme = new QString(t);
 }
 
 void Game::createGraph()
@@ -132,11 +133,13 @@ void Game::spawnBooster()
 {
     //Booster* booster = new Booster(scene);
 }
-
+void Game::setTheme(QString t){
+    theme =new QString(t);
+}
 void Game::buildBoard(QString filePath)
 {
     readData(filePath);
-    QPixmap gridTile(":/mapAssets/Grass.png");
+    QPixmap gridTile(*theme);
     gridTile = gridTile.scaled(blockPixel, blockPixel);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 12; j++) {

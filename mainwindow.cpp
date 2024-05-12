@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     current_level = 1;
+    theme = ":/mapAssets/Grass.png";
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +38,7 @@ void MainWindow::on_start_clicked()
     begin_game();
 }
 void MainWindow::begin_game(){
-    game = new Game(current_level);
+    game = new Game(current_level, theme);
     setCentralWidget(game);
     QObject::connect(game,&Game::win,this,&MainWindow::won);
     QObject::connect(game,&Game::lose,this,&MainWindow::lost);
@@ -46,14 +47,14 @@ void MainWindow::begin_game(){
 }
 void MainWindow::on_settings_clicked()
 {
-    settings_w = new settings();
+    settings_w = new settings(game);
     QObject::connect(settings_w,&settings::back,this,&MainWindow::reset);
     QObject::connect(settings_w,&settings::map_design,this,&MainWindow::map_design);
     setCentralWidget(settings_w);
 }
 void MainWindow::back_to_settings(){
     reset();
-    settings_w = new settings();
+    settings_w = new settings(game);
     QObject::connect(settings_w,&settings::back,this,&MainWindow::reset);
     QObject::connect(settings_w,&settings::map_design,this,&MainWindow::map_design);
     setCentralWidget(settings_w);
@@ -62,7 +63,15 @@ void MainWindow::back_to_settings(){
 void MainWindow::map_design(){
     settings_w->map_designer_w = new map_designer;
     QObject::connect(settings_w->map_designer_w,&map_designer::back,this,&MainWindow::back_to_settings);
+    QObject::connect(settings_w->map_designer_w,&map_designer::grass,this,&MainWindow::grass);
+    QObject::connect(settings_w->map_designer_w,&map_designer::stone,this,&MainWindow::stone);
     setCentralWidget(settings_w->map_designer_w);
+}
+void MainWindow::grass(){
+    theme = QString(":/mapAssets/Grass.png");
+}
+void MainWindow::stone(){
+    theme = (QString(":/mapAssets/Resources/stone.jpg"));
 }
 void MainWindow::reset(){
     ui->setupUi(this);

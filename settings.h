@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "map_designer.h"
+#include "game.h"
 namespace Ui {
 class settings;
 }
@@ -13,6 +14,7 @@ class settings : public QWidget
 
 public:
     explicit settings(QWidget *parent = nullptr);
+    explicit settings(Game *);
     ~settings();
     map_designer * map_designer_w;
 signals:
@@ -26,6 +28,7 @@ private slots:
 
 private:
     Ui::settings *ui;
+    Game * game_w;
 };
 
 #endif // SETTINGS_H

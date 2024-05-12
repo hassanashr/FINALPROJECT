@@ -68,6 +68,7 @@
         <file>Worker/8_enemies_1_walk_019.png</file>
         <file>Worker/baseSprite.png</file>
         <file>Resources/X.png</file>
+        <file>Resources/stone.jpg</file>
     </qresource>
     <qresource prefix="/enemyAssets">
         <file>Enemy/attack_1.png</file>
