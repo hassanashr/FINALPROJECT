@@ -30,7 +30,7 @@ void Wall::mousePressEvent(QGraphicsSceneMouseEvent *e)
 void Wall::changeHealth(int healthChange)
 {
     if(healthBar == nullptr){
-        healthBar = new HealthBar(this, 50, 10, getX() * 61 + 5, getY() * 57 + 55, 1);
+        healthBar = new HealthBar(this, 50, 10, pos().x() + 5, pos().y() + 10, 1);
     }
 
     if (getHealth() + healthChange >= getMaxHealth()) {

@@ -24,6 +24,7 @@ void settings::on_map_design_clicked()
 {
     map_designer_w = new map_designer;
     emit map_design();
+    delete this;
 }
 
 

@@ -47,6 +47,10 @@ void Game::startLevel()
     enemySpawning->start(2000);
     boosterSpawning = new QTimer(this);
     connect(boosterSpawning, SIGNAL(timeout()), this, SLOT(spawnBooster()));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 526a2aa0d6fdf851389dd7a3c76dfffc932e9388
 }
 
 void Game::Lost() {

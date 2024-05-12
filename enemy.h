@@ -35,6 +35,7 @@ private:
     bool isAttackOver;
     bool toRight;
     bool isDead = false;
+    bool inAttack = false;
 
 
 public:

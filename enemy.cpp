@@ -17,12 +17,8 @@ extern Game *game;
 Enemy::Enemy(QGraphicsScene* parent, int x, int y)
 {
     parentScene = parent;
-    setPixmap(
-        QPixmap(":/enemyAssets/Enemy/baseSprite.png")
-            .scaled(32,
-                    32,
-                    Qt::KeepAspectRatio,
-                    Qt::SmoothTransformation)); //needs some refining until graphically appealing
+    setPixmap(QPixmap(":/enemyAssets/Enemy/baseSprite.png")
+                  .scaled(50, 50)); //needs some refining until graphically appealing
     setPos(x, y);
     int l = game->getLevel();
     maxHealth = currHealth = levelHealth[l];
@@ -146,6 +142,7 @@ void Enemy::movePath()
     QList<QGraphicsItem *> collided_items = collidingItems();
     for (auto item : collided_items) {
         if (typeid(*item) == typeid(Wall)) {
+            inAttack = true;
             Wall *w = dynamic_cast<Wall *>(item);
             if (isAttackOver){
                 attackWall(w);
@@ -154,10 +151,12 @@ void Enemy::movePath()
             }
             startAttackingAnimation();
         } else if (typeid(*item) == typeid(Worker)) {
+            inAttack = true;
             Worker *w = dynamic_cast<Worker *>(item);
             w->Die();
             startAttackingAnimation();
         } else if (typeid(*item) == typeid(Castle)) {
+            inAttack = true;
             Castle* castle = dynamic_cast<Castle*>(item);
             if (isAttackOver){
                 attackCastle(castle);
@@ -166,6 +165,7 @@ void Enemy::movePath()
             }
             startAttackingAnimation();
         } else if (typeid(*item) == typeid(Tower)) {
+            inAttack = true;
             Tower* tower = dynamic_cast<Tower*>(item);
             if (isAttackOver){
                 attackTower(tower);
@@ -176,7 +176,20 @@ void Enemy::movePath()
         }
 
     }
-    if (collided_items.size() == 1) {
+    if(collided_items.size() == 1 || collided_items.size()==2){
+        startWalkingAnimation();
+    }else{
+        for(auto item : collided_items){
+            if(typeid(*item) == typeid(Tower) ||typeid(*item) == typeid(Worker) ||typeid(*item) == typeid(Castle) || typeid(*item) == typeid(Wall)){
+                inAttack = true;
+                break;
+            }else{
+                inAttack = false;
+            }
+
+        }
+    }
+    if(!inAttack){
         startWalkingAnimation();
     }
 }

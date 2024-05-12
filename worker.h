@@ -47,6 +47,7 @@ public:
     int getHealing();
     bool isDone();
     static int currentWorkers;
+    static int maxWorkers;
 
     //setters
     void setHealing(int h);
