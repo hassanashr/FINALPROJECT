@@ -13,6 +13,7 @@
 #include <QTransform>
 #include<QList>
 class TowerBullet;
+extern Game *game;
 Enemy::Enemy(QGraphicsScene* parent, int x, int y)
 {
     parentScene = parent;
@@ -23,13 +24,10 @@ Enemy::Enemy(QGraphicsScene* parent, int x, int y)
                     Qt::KeepAspectRatio,
                     Qt::SmoothTransformation)); //needs some refining until graphically appealing
     setPos(x, y);
-    //int l = game->getLevel();
-    //maxHealth = currHealth = levelHealth[l];
-    //currSpeed = levelSpeed[l];
-    //currDamage = levelDamage[l];
-    maxHealth = 10;
-    currHealth = maxHealth;
-    currDamage = 3;
+    int l = game->getLevel();
+    maxHealth = currHealth = levelHealth[l];
+    currSpeed = levelSpeed[l];
+    currDamage = levelDamage[l];
     for (int i = 1; i <= 11; ++i) {
         QString filePath = ":/enemyAssets/Enemy/run_" + QString::number(i) + ".png";
         animatedWalk.append(QPixmap(filePath));

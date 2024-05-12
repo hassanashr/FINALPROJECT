@@ -46,10 +46,6 @@ private:
     int currentLevel;
     int mapID;
     double gameVolume;
-    void makeGraph();
-    void readData();
-    void saveData();
-    void makeBoard();
 
     QTimer *enemySpawning;
     QTimer *boosterSpawning;
