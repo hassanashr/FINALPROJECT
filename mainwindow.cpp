@@ -25,14 +25,12 @@ void MainWindow::won(){
     setCentralWidget(win_w);
     QObject::connect(win_w,&win::back,this,&MainWindow::reset);
     QObject::connect(win_w,&win::next,this,&MainWindow::begin_game);
-//add connections
 }
 void MainWindow::lost(){
     lose_w = new lose();
     setCentralWidget(lose_w);
     QObject::connect(lose_w,&lose::back,this,&MainWindow::reset);
     QObject::connect(lose_w,&lose::retry,this,&MainWindow::begin_game);
-    //add connections
 }
 void MainWindow::on_start_clicked()
 {
@@ -48,20 +46,23 @@ void MainWindow::begin_game(){
 }
 void MainWindow::on_settings_clicked()
 {
-    /* Code for switching to settings widget
     settings_w = new settings();
     QObject::connect(settings_w,&settings::back,this,&MainWindow::reset);
     QObject::connect(settings_w,&settings::map_design,this,&MainWindow::map_design);
     setCentralWidget(settings_w);
-    */
 }
 void MainWindow::back_to_settings(){
+    reset();
+    settings_w = new settings();
+    QObject::connect(settings_w,&settings::back,this,&MainWindow::reset);
+    QObject::connect(settings_w,&settings::map_design,this,&MainWindow::map_design);
     setCentralWidget(settings_w);
+
 }
 void MainWindow::map_design(){
-    //settings_w->map_designer_w = new map_designer;
-    //QObject::connect(settings_w->map_designer_w,&map_designer::back,this,&MainWindow::back_to_settings);
-    //setCentralWidget(settings_w->map_designer_w);
+    settings_w->map_designer_w = new map_designer;
+    QObject::connect(settings_w->map_designer_w,&map_designer::back,this,&MainWindow::back_to_settings);
+    setCentralWidget(settings_w->map_designer_w);
 }
 void MainWindow::reset(){
     ui->setupUi(this);
