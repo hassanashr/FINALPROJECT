@@ -13,9 +13,9 @@ class Enemy : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
-    double levelSpeed[5];
-    double levelHealth[5];
-    double levelDamage[5];
+    double levelSpeed[5] = {2, 2.5, 3, 3.5, 3.75};
+    double levelHealth[5] = {15, 20, 25, 30, 32.5};
+    double levelDamage[5] = {5, 6, 6.5, 7, 7.5};
     double maxHealth;
     double currHealth;
     double currSpeed;

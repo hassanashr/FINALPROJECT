@@ -12,7 +12,7 @@ TowerBullet::TowerBullet(QGraphicsScene* Scene, Game* game):Structure() {
     move_timer->start(50);
     parent = game->gameScene;
     parentGame = game;
-    damage = 1;
+    damage = 5;
     damageIncreasedCount = 0;
 }
 
