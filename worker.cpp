@@ -89,7 +89,7 @@ void Worker::Die()
     isDead = true;
     startDeathAnimation();
     QTimer::singleShot(15*animationInterval, this, SLOT(deleteWorker()));
-    //game->getScene()->removeItem(this);
+
     //game->setDeadWorker(getDeadWorker()++);
 }
 
@@ -260,7 +260,8 @@ void Worker::cooldownTime()
 
 void Worker::deleteWorker()
 {
-    delete this;
+    scene()->removeItem(this);
+    //delete this;
 }
 
 int Worker::currentWorkers = 0;

@@ -35,13 +35,18 @@ void Wall::changeHealth(int healthChange)
 
     if (getHealth() + healthChange >= getMaxHealth()) {
         setHealth(getMaxHealth());
+        qDebug("Before Delete Health: Restored");
         delete healthBar;
+        qDebug("After Delete HealthBar: Restored");
         healthBar = nullptr;
     } else if (getHealth() + healthChange <= 0) {
         //Destruc object and emit game over
+        qDebug("Before Delete Health: Destroy");
         delete healthBar;
+        qDebug("After Delete HealthBar: Destory");
         parent->removeItem(this);
         setType(0);
+        qDebug("After Wall is Destroyed");
     } else {
         setHealth(getHealth() + healthChange);
         healthBar->updateBar();

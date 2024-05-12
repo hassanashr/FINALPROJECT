@@ -13,6 +13,7 @@
 #include <graph.h>
 #include <tower.h>
 #include <wall.h>
+
 class Enemy;
 class Game : public QGraphicsView
 {

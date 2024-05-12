@@ -151,10 +151,14 @@ void Enemy::movePath()
             }
             startAttackingAnimation();
         } else if (typeid(*item) == typeid(Worker)) {
+
             inAttack = true;
             Worker *w = dynamic_cast<Worker *>(item);
             w->Die();
             startAttackingAnimation();
+            isAttackOver = false;
+            QTimer::singleShot(1000, this, SLOT(cooldownTime()));
+
         } else if (typeid(*item) == typeid(Castle)) {
             inAttack = true;
             Castle* castle = dynamic_cast<Castle*>(item);
@@ -192,6 +196,7 @@ void Enemy::movePath()
     if(!inAttack){
         startWalkingAnimation();
     }
+
 }
 
 void Enemy::startWalkingAnimation()
@@ -241,7 +246,7 @@ void Enemy::cooldownTime()
 void Enemy::die()
 {
     parentScene->removeItem(this);
-    delete this;
+    //delete this;
 }
 
 void Enemy::updatePixmap()

@@ -7,9 +7,11 @@ TimerWidget::TimerWidget(Game *parent) : QGraphicsTextItem(0), timeRemaining(5 *
     QFont font("Arial", 16);
     setFont(font);
     setDefaultTextColor(Qt::black);
+    setPos(400, 0);
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &TimerWidget::updateTime);
+    startTimer();
 }
 
 void TimerWidget::startTimer() {

@@ -3,8 +3,8 @@
 
 CloseButton::CloseButton(QWidget* parent): QObject(), QGraphicsPixmapItem()
 {
-    setPixmap(QPixmap(":/img/Resources/X.png").scaled(50, 50));
-    setPos(750, 0);
+    setPixmap(QPixmap(":/mapAssets/Resources/X.png").scaled(50, 50));
+    setPos(786 - 100, 0);
     original = parent;
 }
 
