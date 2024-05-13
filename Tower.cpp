@@ -13,7 +13,7 @@
 #include "game.h"
 
 Tower::Tower(QGraphicsScene* Scene, Game* game):Structure() {
-    parent = game->gameScene;
+    parent = Scene;
     parentGame = game;
     setPixmap(QPixmap(":/mapAssets/Resources/tower.png")
                   .scaled(48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -55,6 +55,7 @@ void Tower::fire(const QPointF &attackDest) {
     QLineF ln(QPointF(x() + 20, y() + 30), mapToScene(attackDest));
     double angle = -ln.angle();
     bullet->setRotation(angle);
+    bullet->setZValue(20);
     parent->addItem(bullet);
 }
 

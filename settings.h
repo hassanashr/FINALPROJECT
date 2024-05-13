@@ -24,6 +24,8 @@ private slots:
     void on_map_design_clicked();
 
 
+    void on_sound_valueChanged(int value);
+
 private:
     Ui::settings *ui;
 };

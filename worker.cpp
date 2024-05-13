@@ -41,6 +41,11 @@ Worker::Worker(int x, int y)
 Worker::~Worker()
 {
     currentWorkers--;
+    delete moveTimer;
+    delete healingTimer;
+    delete returnTimer;
+    delete deathTimer;
+    delete walkTimer;
 }
 
 int Worker::getHealing()
@@ -260,8 +265,8 @@ void Worker::cooldownTime()
 
 void Worker::deleteWorker()
 {
-    scene()->removeItem(this);
-    //delete this;
+    //scene()->removeItem(this);
+    delete this;
 }
 
 int Worker::currentWorkers = 0;

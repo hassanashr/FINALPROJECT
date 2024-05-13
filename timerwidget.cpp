@@ -15,7 +15,7 @@ TimerWidget::TimerWidget(Game *parent) : QGraphicsTextItem(0), timeRemaining(5 *
 }
 
 void TimerWidget::startTimer() {
-    timeRemaining = 200;
+    timeRemaining = 5;
     updateTime();
     timer->start(1000);
 }
@@ -34,7 +34,7 @@ void TimerWidget::updateTime() {
         setPlainText("Time's up!");
         timer->stop();
         //Here should exist code that updates the window to the win or lose screen
-        //parentGame->update();
+        parentGame->Won();
         //delete parentGame->parentWidget;
     }
 }

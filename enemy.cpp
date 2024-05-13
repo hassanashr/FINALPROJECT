@@ -50,7 +50,13 @@ Enemy::Enemy(QGraphicsScene* parent, int x, int y)
     isAttackOver = true;
 }
 
-Enemy::~Enemy() {}
+Enemy::~Enemy() {
+    delete animatedAttackTimer;
+    delete animatedWalkTimer;
+    delete animatedDeathTimer;
+    delete cooldownTimer;
+    delete movementTimer;
+}
 
 void Enemy::setDamage(double d)
 {
@@ -119,7 +125,7 @@ void Enemy::movePath()
 
     //Basic Movement for testing
     int stepsize = 10;
-    QLineF ln(pos().x(), pos().y(), 7*61+1, 7*57 + 51);
+    QLineF ln(pos().x(), pos().y(), 5*64, 7*64);
     double theta = -ln.angle();
 
     double dy = stepsize * qSin(qDegreesToRadians(theta));
@@ -151,10 +157,10 @@ void Enemy::movePath()
             }
             startAttackingAnimation();
         } else if (typeid(*item) == typeid(Worker)) {
-
-            inAttack = true;
             Worker *w = dynamic_cast<Worker *>(item);
             w->Die();
+
+            inAttack = true;
             startAttackingAnimation();
             isAttackOver = false;
             QTimer::singleShot(1000, this, SLOT(cooldownTime()));

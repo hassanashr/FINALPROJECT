@@ -78,7 +78,7 @@ bool Structure::isDamaged()
     //Used to check if the strucutre is damaged and emit a signal for the worker to spawn
     if(!requestedAid && health < maxHealth && Worker::currentWorkers <= Worker::maxWorkers){
         requestedAid = true;
-        Worker* worker = new Worker(6*61+1, 6*57 + 51);
+        Worker* worker = new Worker(5*64, 7*64);
         worker->setStruct(this);
         parent->addItem(worker);
         worker->setZValue(9);

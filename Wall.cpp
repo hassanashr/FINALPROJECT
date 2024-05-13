@@ -10,7 +10,7 @@ Wall::Wall(QGraphicsScene *scene)
     setType(2);
     setMaxHealth(20);
     setHealth(getMaxHealth());
-    setCost((getHealth() / getMaxHealth()) * 100);
+    setCost(10000000);
     healthBar = nullptr;
 }
 
@@ -52,4 +52,5 @@ void Wall::changeHealth(int healthChange)
         healthBar->updateBar();
     }
     isDamaged();
+
 }

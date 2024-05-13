@@ -32,6 +32,7 @@ void Castle::changeHealth(double x)
         //Placeholder code for now
         setHealth(0);
         healthBar->updateBar();
+        parentGame->Lost();
         //Code should be here to emit a signal to go to lose screen
     } else {
         setHealth(getHealth() + x);

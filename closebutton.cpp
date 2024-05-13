@@ -11,4 +11,5 @@ CloseButton::CloseButton(QWidget* parent): QObject(), QGraphicsPixmapItem()
 
 void CloseButton::mousePressEvent(QGraphicsSceneMouseEvent * e){
     //Code that quits game
+
 }

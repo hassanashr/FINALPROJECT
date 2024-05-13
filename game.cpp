@@ -4,7 +4,8 @@
 #include "graph.h"
 #include "Boosters.h"
 #include "timerwidget.h"
-
+#include <QAudioOutput>
+#include <QMediaPlayer>
 
 Game::Game(int l)
 {
@@ -15,12 +16,15 @@ Game::Game(int l)
     setWindowTitle("Clash Of Clans");
     blockPixel = 64;
     currentLevel = l;
-    CloseButton* close_btn = new CloseButton(this);
-    gameScene->addItem(close_btn);
-    close_btn->setZValue(100);
     TimerWidget* timer = new TimerWidget(this);
     gameScene->addItem(timer);
     timer->setZValue(50);
+    QAudioOutput* gameAudio = new QAudioOutput();
+    gameAudio->setVolume(1);
+    QMediaPlayer* gameSound = new QMediaPlayer();
+    gameSound->setAudioOutput(gameAudio);
+    gameSound->setSource(QUrl("qrc:/sound/26. Combat Music.mp3"));
+    gameSound->play();
 }
 
 void Game::createGraph()
@@ -52,7 +56,7 @@ void Game::startLevel()
     enemySpawning = new QTimer(this);
     connect(enemySpawning, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
     spawnEnemy();
-    enemySpawning->start(2000);
+    enemySpawning->start(10000);
     boosterSpawning = new QTimer(this);
     connect(boosterSpawning, SIGNAL(timeout()), this, SLOT(spawnBooster()));
 }
@@ -105,6 +109,7 @@ void Game::spawnEnemy()
 {
     int spawnLocation = rand() % 4;
     int x, y;
+
     switch (spawnLocation) {
     case 0:
         x = 0; // left side
@@ -130,7 +135,7 @@ void Game::spawnEnemy()
 
 void Game::spawnBooster()
 {
-    //Booster* booster = new Booster(scene);
+    Booster* booster = new Booster(gameScene);
 }
 
 void Game::buildBoard(QString filePath)

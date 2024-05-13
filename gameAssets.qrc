@@ -68,6 +68,7 @@
         <file>Worker/8_enemies_1_walk_019.png</file>
         <file>Worker/baseSprite.png</file>
         <file>Resources/X.png</file>
+        <file>Bomb3.png</file>
     </qresource>
     <qresource prefix="/enemyAssets">
         <file>Enemy/attack_1.png</file>
@@ -110,5 +111,10 @@
         <file>Enemy/run_9.png</file>
         <file>Enemy/run_10.png</file>
         <file>Enemy/run_11.png</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>lose.mpeg</file>
+        <file>26. Combat Music.mp3</file>
+        <file>win.mpeg</file>
     </qresource>
 </RCC>
