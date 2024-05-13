@@ -7,7 +7,7 @@
 #include <QAudioOutput>
 #include <QMediaPlayer>
 
-Game::Game(int l)
+Game::Game(int l, QString t)
 {
     gameScene = new QGraphicsScene();
     gameGraph = new Graph();
@@ -25,6 +25,7 @@ Game::Game(int l)
     gameSound->setAudioOutput(gameAudio);
     gameSound->setSource(QUrl("qrc:/sound/26. Combat Music.mp3"));
     gameSound->play();
+    theme = new QString(t);
 }
 
 void Game::createGraph()
@@ -145,11 +146,13 @@ void Game::spawnBooster()
     Booster* booster = new Booster(gameScene);
     gameScene->addItem(booster);
 }
-
+void Game::setTheme(QString t){
+    theme =new QString(t);
+}
 void Game::buildBoard(QString filePath)
 {
     readData(filePath);
-    QPixmap gridTile(":/mapAssets/Grass.png");
+    QPixmap gridTile(*theme);
     gridTile = gridTile.scaled(blockPixel, blockPixel);
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 12; j++) {

@@ -45,6 +45,93 @@
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Grass">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>350</y>
+     <width>291</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Verdana</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgb(238,215,161);
+    border-style: solid;
+    color:  rgb(71,92,108);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(205,139,98);
+    font: 48px;
+    padding: 6px;
+</string>
+   </property>
+   <property name="text">
+    <string>Grass</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Stone">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>350</y>
+     <width>291</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Verdana</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgb(238,215,161);
+    border-style: solid;
+    color:  rgb(71,92,108);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(205,139,98);
+    font: 48px;
+    padding: 6px;
+</string>
+   </property>
+   <property name="text">
+    <string>Stone</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>50</y>
+     <width>630</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Verdana Pro Cond Black</family>
+     <pointsize>48</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Choose Theme</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

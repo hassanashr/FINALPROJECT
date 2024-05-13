@@ -8,6 +8,13 @@ settings::settings(QWidget *parent)
 {
     ui->setupUi(this);
 }
+settings::settings(Game * game)
+    : QWidget(nullptr)
+    , ui(new Ui::settings)
+{
+    ui->setupUi(this);
+    game_w =game;
+}
 
 settings::~settings()
 {
@@ -23,7 +30,7 @@ void settings::on_back_clicked()
 
 void settings::on_map_design_clicked()
 {
-    map_designer_w = new map_designer;
+    map_designer_w = new map_designer(game_w);
     emit map_design();
     delete this;
 }

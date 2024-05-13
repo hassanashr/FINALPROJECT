@@ -33,10 +33,10 @@ private slots:
     void begin_game();
 
     void won();
+    void stone();
+    void grass();
 
     void lost();
-
-
 
 private:
     Ui::MainWindow *ui;
@@ -45,6 +45,7 @@ private:
     win* win_w;
     lose* lose_w;
     int current_level;
+    QString theme;
 };
 
 #endif // MAINWINDOW_H

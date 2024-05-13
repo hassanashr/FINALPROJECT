@@ -21,10 +21,11 @@ class Game : public QGraphicsView
 {
     Q_OBJECT
 public:
-    Game(int l);
+    Game(int l, QString t);
     Graph *gameGraph;
     QGraphicsScene *gameScene;
-
+    QString * theme;
+    void setTheme(QString t);
     void buildBoard(QString filePath);
     void readData(QString filePath);
     void createGraph();
