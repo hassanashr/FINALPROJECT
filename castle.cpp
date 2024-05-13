@@ -7,7 +7,7 @@ Castle::Castle(QGraphicsScene* Scene, Game* game): Structure() {
     parentGame = game;
     setPixmap(QPixmap(":/mapAssets/Resources/Castle.png")
                   .scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    setMaxHealth(20);
+    setMaxHealth(100);
     setType(1);
     setHealth(getMaxHealth());
     healthBar = new HealthBar(this, 400, 50, 0, 0, 3);
@@ -38,4 +38,5 @@ void Castle::changeHealth(double x)
         setHealth(getHealth() + x);
         healthBar->updateBar();
     }
+    isDamaged();
 }

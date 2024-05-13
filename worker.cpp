@@ -1,4 +1,6 @@
 #include "worker.h"
+#include "Tower.h"
+#include "castle.h"
 
 Worker::Worker(int x, int y)
 {
@@ -223,6 +225,38 @@ void Worker::movePath()
 
                     if(doneHealingAnimation){
                         dynamic_cast<Wall*>(item)->changeHealth(healing);
+                        doneHealing = false;
+                        doneHealingAnimation = false;
+                        QTimer::singleShot(1200, this, SLOT(cooldownTime()));
+                    }
+
+                }else{
+                    doneHealing = true;
+                    startWalkingAnimation();
+                    returnHome();
+                }
+            }else if(typeid(*item) == typeid(Tower)){
+                startHealingAnimation();
+                if(dynamic_cast<Tower*>(item)->isDamaged()){
+
+                    if(doneHealingAnimation){
+                        dynamic_cast<Tower*>(item)->changeHealth(healing);
+                        doneHealing = false;
+                        doneHealingAnimation = false;
+                        QTimer::singleShot(1200, this, SLOT(cooldownTime()));
+                    }
+
+                }else{
+                    doneHealing = true;
+                    startWalkingAnimation();
+                    returnHome();
+                }
+            }else if(typeid(*item) == typeid(Castle)){
+                startHealingAnimation();
+                if(dynamic_cast<Castle*>(item)->isDamaged()){
+
+                    if(doneHealingAnimation){
+                        dynamic_cast<Castle*>(item)->changeHealth(healing);
                         doneHealing = false;
                         doneHealingAnimation = false;
                         QTimer::singleShot(1200, this, SLOT(cooldownTime()));

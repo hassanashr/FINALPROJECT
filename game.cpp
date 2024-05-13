@@ -19,9 +19,9 @@ Game::Game(int l)
     TimerWidget* timer = new TimerWidget(this);
     gameScene->addItem(timer);
     timer->setZValue(50);
-    QAudioOutput* gameAudio = new QAudioOutput();
+    gameAudio = new QAudioOutput();
     gameAudio->setVolume(1);
-    QMediaPlayer* gameSound = new QMediaPlayer();
+    gameSound = new QMediaPlayer();
     gameSound->setAudioOutput(gameAudio);
     gameSound->setSource(QUrl("qrc:/sound/26. Combat Music.mp3"));
     gameSound->play();
@@ -57,17 +57,24 @@ void Game::startLevel()
     connect(enemySpawning, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
     spawnEnemy();
     enemySpawning->start(10000);
-    boosterSpawning = new QTimer(this);
-    connect(boosterSpawning, SIGNAL(timeout()), this, SLOT(spawnBooster()));
+    //boosterSpawning = new QTimer(this);
+    //connect(boosterSpawning, SIGNAL(timeout()), this, SLOT(spawnBooster()));
+
 }
 
 void Game::Lost() {
     emit lose();
+    gameSound->stop();
+    delete gameAudio;
+    delete gameSound;
     delete this;
 }
 
 void Game::Won() {
     emit win();
+    gameSound->stop();
+    delete gameAudio;
+    delete gameSound;
     delete this;
 }
 
@@ -136,6 +143,7 @@ void Game::spawnEnemy()
 void Game::spawnBooster()
 {
     Booster* booster = new Booster(gameScene);
+    gameScene->addItem(booster);
 }
 
 void Game::buildBoard(QString filePath)

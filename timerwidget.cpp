@@ -15,7 +15,7 @@ TimerWidget::TimerWidget(Game *parent) : QGraphicsTextItem(0), timeRemaining(5 *
 }
 
 void TimerWidget::startTimer() {
-    timeRemaining = 5;
+    timeRemaining = 60;
     updateTime();
     timer->start(1000);
 }

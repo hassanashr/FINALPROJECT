@@ -13,6 +13,8 @@
 #include <graph.h>
 #include <tower.h>
 #include <wall.h>
+#include <QAudioOutput>
+#include <QMediaPlayer>
 
 class Enemy;
 class Game : public QGraphicsView
@@ -47,6 +49,8 @@ private:
     int currentLevel;
     int mapID;
     double gameVolume;
+    QAudioOutput* gameAudio;
+    QMediaPlayer* gameSound;
 
     QTimer *enemySpawning;
     QTimer *boosterSpawning;

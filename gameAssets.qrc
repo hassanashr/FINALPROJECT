@@ -69,6 +69,7 @@
         <file>Worker/baseSprite.png</file>
         <file>Resources/X.png</file>
         <file>Bomb3.png</file>
+        <file>booster.png</file>
     </qresource>
     <qresource prefix="/enemyAssets">
         <file>Enemy/attack_1.png</file>

@@ -7,7 +7,7 @@ Booster::Booster(QGraphicsScene* Scene) : Structure() {
     parentscene=Scene; // Adjust according to your map size
 
     // Load image
-    QPixmap image(":/img/booster.png");
+    QPixmap image(":/mapAssets/booster.png");
     imageItem = parentscene->addPixmap(image);
 
 
